@@ -1,0 +1,67 @@
+        body {
+            margin: 0;
+            font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+            text-align: center;
+            background: lightgoldenrodyellow;
+        }
+
+        .container {
+            width: 100vh;
+            border: 0;
+            text-align: center;
+            background: rgb(240, 229, 135);
+            margin: auto;
+
+        }
+
+        .calendar {
+            width: 60vh;
+            height: 600px;
+            text-align: center;
+            background: rgb(170, 216, 189);
+
+        }
+
+        .calendar .week td {
+            background: rgb(130, 222, 238);
+            font-size: 30px;
+        }
+
+        .month {
+            width: 60vh;
+            background: aqua;
+            font-size: 20px;
+        }
+
+        .calendar td {
+            font-size: 25px;
+            background: #becdd3;
+        }
+
+        .calendar td:hover {
+            background: #ff0000;
+            font-weight: bold;
+        }
+
+        .date {
+            display:flex;
+            justify-content: flex-end;
+            font-size: 50px;
+            font-weight: bold;
+
+        }
+
+        .rCol {
+            background: url("https://picsum.photos/400/640/?random=1");
+            background-repeat: no-repeat;
+            background-size: auto;
+            width: 40vh;
+        }
+
+        .calendar .selected {
+            background: #3e70db;
+        }
+
+        .month .selected {
+            background: blueviolet
+        }
