@@ -9,12 +9,27 @@
 
 </head>
 
+<?php
+
+// 利用表單輸入獲得年份值，若沒有則使用今年做為值
+if (isset($_GET["year"])) {
+    $year = $_GET['year'];
+} else {
+    $year = date("Y");
+}
+// 利用表單輸入獲得月份值，若沒有則使用本月做為值
+if (isset($_GET["month"])) {
+    $month = $_GET['month'];
+} else {
+    $month = date("m");
+}
+?>
 
 <body>
     <div>
         <form action="?" method='get'>
-            年份:<input type="number" name="year">
-            月份:<input type="number" name="month">
+            年份:<input type="number" name="year" min="-9999" max="9999" title="請輸入年份" value="<?= $year; ?>">
+            月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12" value="<?= $month; ?>">
             <input type="submit" value="查詢">
 
         </form>
@@ -22,28 +37,15 @@
 
     <?php
 
-    // 利用表單輸入獲得年份值，若沒有則使用今年做為值
-    if (isset($_GET["year"])) {
-        $year = $_GET['year'];
-    } else {
-        $year = date("Y");
-    }
-    // 利用表單輸入獲得月份值，若沒有則使用本月做為值
-    if (isset($_GET["month"])) {
-        $month = $_GET['month'];
-    } else {
-        $month = date("m");
-    }
-
     echo "<h4 style='text-align:center'>西元", $year, "年", $month, "月</h4>";
     ?>
 
     <table class="container">
         <tr>
             <td class="date">
-                <?php
-                echo "<span>", date("Y年m月d日"), "</span>";
-                ?>
+                <a href="calendar.php?month=<?= date("m", strtotime("first day of -1 month", strtotime($month))); ?>">上月(<?=date("m", strtotime("first day of -1 month", strtotime($month))); ?>)</a>
+                <span>本月(<?= $month; ?>)</span>
+                <a href="calendar.php?month=<?= date("m", strtotime("first day of +1 month", strtotime($month))); ?>">下月(<?= date("m", strtotime("first day of +1 month", strtotime($month))); ?>)</a>
             </td>
         </tr>
         <tr>
