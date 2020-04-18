@@ -32,7 +32,8 @@
             <td class="date">
                 <!-- 螢幕會顯示本月份以及上下個月的選項 -->
                 <a href="calendar.php?thisDay=<?= $lastMonth; ?>">上月(<?= date("n", $lastMonth); ?>)</a>
-                <span>本月(<?= $thisMonth; ?>)</span>
+                <a href="calendar.php?thisDay=<?= time(); ?>">回本月</a>
+                <!-- <span>本月(<?= $thisMonth; ?>)</span> -->
                 <a href="calendar.php?thisDay=<?= $nextMonth; ?>">下月(<?= date("n", $nextMonth); ?>)</a>
             </td>
         </tr>
@@ -67,18 +68,21 @@
 
                     <?php
 
-                    //為何沒有跟著月份重新填？
+                    //為何只印了第1次，沒有跟著月份重新填？
+                    //因為變數設定問題，逐個變數印出來看看就會知道發生什麼事。
+
                     // 開工用php填日期了，先設定一個以後可能用得著的今天
                     $today = $thisDay[0];
 
                     // 先定出本月份的第1天
                     $firstDay = date("first day of", $thisDay[0]);
+                //    echo $firstDay;
 
                     // 第一天是該週的第幾天
-                    $firstDayWeek = date("w", strtotime($firstDay));
+                    $firstDayWeek = date("w", $thisDay[0]);
 
                     // 當月份總共有幾天
-                    $days = date("t", strtotime($firstDay));
+                    $days = date("t", $thisDay[0]);
 
                     // 當月份跨了幾週，這很重要
                     $totalWeeks = ceil(($days + $firstDayWeek) / 7);

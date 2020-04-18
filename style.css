@@ -6,8 +6,9 @@
         }
         
         .container {
-            border-radius: 30%;
-            width: 100vw;
+            text-decoration: none;
+            /* border-radius: 30%; */
+            width: 1000px;
             border: 0;
             text-align: center;
             background: rgb(240, 229, 135);
@@ -16,7 +17,7 @@
         }
         
         .calendar {
-            width: 60vw;
+            width: 600px;
             height: 600px;
             text-align: center;
             background: rgb(170, 216, 189);
@@ -29,7 +30,7 @@
         }
 
         .month {
-            width: 60vw;
+            width: 600px;
             background: aqua;
             font-size: 20px;
         }
@@ -56,7 +57,7 @@
             background: url("https://picsum.photos/400/640/?random=1");
             background-repeat: no-repeat;
             background-size: auto;
-            width: 40vh;
+            width: 400px;
         }
 
         .calendar .selected {
