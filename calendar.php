@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆 Perpetual Calendar</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .rCol{
+            /* 必須把背景圖片拿回來放，不然不會跟著月份輪換 */
+            background: url("https://picsum.photos/400/640/?random=1");
+        }
+    </style>
 
 </head>
 

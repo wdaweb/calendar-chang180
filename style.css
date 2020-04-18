@@ -54,7 +54,7 @@
         }
 
         .rCol {
-            background: url("https://picsum.photos/400/640/?random=1");
+            /* background: url("https://picsum.photos/400/640/?random=1"); */
             background-repeat: no-repeat;
             background-size: auto;
             width: 400px;

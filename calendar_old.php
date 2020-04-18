@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
 
 </head>
 
@@ -93,7 +95,7 @@ if (isset($_GET["month"])) {
                     $totalWeeks = ceil(($days + $firstDayWeek) / 7);
 
 
-                    for ($i = 0; $i < $totalWeeks; $i++) {
+                    for ($w = 0; $w < $totalWeeks; $w++) {
 
                         echo "<tr>";
                         for ($j = 0; $j < 7; $j++) {
