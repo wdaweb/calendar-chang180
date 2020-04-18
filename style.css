@@ -4,18 +4,19 @@
             text-align: center;
             background: lightgoldenrodyellow;
         }
-
+        
         .container {
-            width: 100vh;
+            border-radius: 30%;
+            width: 100vw;
             border: 0;
             text-align: center;
             background: rgb(240, 229, 135);
             margin: auto;
-
+            
         }
-
+        
         .calendar {
-            width: 60vh;
+            width: 60vw;
             height: 600px;
             text-align: center;
             background: rgb(170, 216, 189);
@@ -28,7 +29,7 @@
         }
 
         .month {
-            width: 60vh;
+            width: 60vw;
             background: aqua;
             font-size: 20px;
         }

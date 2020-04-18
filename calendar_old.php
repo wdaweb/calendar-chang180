@@ -4,36 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>萬年曆 Perpetual Calendar</title>
+    <title>萬年曆</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
 
+<?php
+
+// 利用表單輸入獲得年份值，若沒有則使用今年做為值
+if (isset($_GET["year"])) {
+    $year = $_GET['year'];
+} else {
+    $year = date("Y");
+}
+// 利用表單輸入獲得月份值，若沒有則使用本月做為值
+if (isset($_GET["month"])) {
+    $month = $_GET['month'];
+} else {
+    $month = date("m");
+}
+?>
 
 <body>
-    <?php
-    // 設定基準日，若沒有就是今天
-    if (!isset($_GET["thisDay"])) $thisDay = getdate();
-    else $thisDay = getdate($_GET["thisDay"]);
+    <div>
+        <form action="?" method='get'>
+            年份:<input type="number" name="year" min="-9999" max="9999" title="請輸入年份" value="<?= $year; ?>">
+            月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12" value="<?= $month; ?>">
+            <input type="submit" value="查詢">
 
-    //設定月份，這個月和前後兩個月
-    $thisMonth = $thisDay["mon"];
-    $lastMonth = strtotime("first day of - 1 month", $thisDay[0]);
-    $nextMonth = strtotime("first day of + 1 month", $thisDay[0]);
-    ?>
+        </form>
+    </div>
 
     <?php
 
-    echo "<h4 style='text-align:center'>西元", $thisDay["year"], "年", $thisDay["mon"], "月</h4>";
+    echo "<h4 style='text-align:center'>西元", $year, "年", $month, "月</h4>";
     ?>
 
     <table class="container">
         <tr>
             <td class="date">
-                <!-- 螢幕會顯示本月份以及上下個月的選項 -->
-                <a href="calendar.php?thisDay=<?= $lastMonth; ?>">上月(<?= date("n", $lastMonth); ?>)</a>
-                <span>本月(<?= $thisMonth; ?>)</span>
-                <a href="calendar.php?thisDay=<?= $nextMonth; ?>">下月(<?= date("n", $nextMonth); ?>)</a>
+                <a href="calendar.php?month=<?= date("m", strtotime("first day of -1 month", strtotime($month))); ?>">上月(<?= date("m", strtotime("first day of -1 month", strtotime($month))); ?>)</a>
+                <span>本月(<?= $month; ?>)</span>
+                <a href="calendar.php?month=<?= date("m", strtotime("first day of +1 month", strtotime($month))); ?>">下月(<?= date("m", strtotime("first day of +1 month", strtotime($month))); ?>)</a>
             </td>
         </tr>
         <tr>
@@ -66,27 +78,26 @@
                     </tr>
 
                     <?php
-
-                    //為何沒有跟著月份重新填？
-                    // 開工用php填日期了，先設定一個以後可能用得著的今天
-                    $today = $thisDay[0];
-
+                    // 開工用php填日期了
+                    $today = date("d-m-Y");
+                    
                     // 先定出本月份的第1天
-                    $firstDay = date("first day of", $thisDay[0]);
+                    $firstDay = date("1-m-Y");
 
                     // 第一天是該週的第幾天
                     $firstDayWeek = date("w", strtotime($firstDay));
 
                     // 當月份總共有幾天
                     $days = date("t", strtotime($firstDay));
-
                     // 當月份跨了幾週，這很重要
                     $totalWeeks = ceil(($days + $firstDayWeek) / 7);
 
-                    // 依照上列資料印出該月份的表格
+
                     for ($i = 0; $i < $totalWeeks; $i++) {
+
                         echo "<tr>";
                         for ($j = 0; $j < 7; $j++) {
+
                             if ($i == 0 && $j < $firstDayWeek) {
                                 echo "<td>";
                                 echo "</td>";
@@ -103,6 +114,8 @@
                         }
                         echo "</tr>";
                     }
+
+
                     ?>
                 </table>
             </td>
