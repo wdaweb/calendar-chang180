@@ -15,29 +15,42 @@
 
 </head>
 
-
 <body>
     <?php
+    // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
+    date_default_timezone_set("Asia/Taipei");
+
     // 設定基準日，若都沒有設定就是今天
-    if (!isset($_GET["thisDay"]) && !isset($_GET["year"]) && !isset($_GET["month"])) $thisDay = getdate();
+    // if (!isset($_GET["year"]) && !isset($_GET["month"])) $thisDay = getdate();
 
 
     // 利用表單輸入獲得年份及月份值，若沒有則使用本月1日做為值
     // strtotime()裏面不能直接丟 $_GE 變數進去，會出錯
 
+    //如果年份和月份不為空值，則使用該年月的第1天：
     if (!empty($_GET["year"]) && !empty($_GET["month"])) {
-        // echo $_GET["year"],"<br>";
-        // echo strtotime($_GET["year"]-$_GET["month"]-1),"<br>";
-        $year=$_GET["year"];
-        $month=$_GET["month"];
+        $year = $_GET["year"];
+        $month = $_GET["month"];
 
-        $thisDay = getdate(strtotime("$year-$month-1"));
-        // echo $thisDay[0], "<br>";
-        // $year = $_GET['year'];
-        // $month = $_GET['month'];
-        // $thisDay = getdate();
-    } elseif (isset($_GET["thisDay"])) $thisDay = getdate($_GET["thisDay"]);
+        // 判斷年份是否為負數
+        if ($year < 0) {
+            $negYear = abs($year);
+            echo $year, "<br>", $negYear, "<br>";
+            $thisDay = getdate(strtotime('-2 * $negYear, strtotime("$negYear-$month-1")'));
+        } else {
+            $thisDay = getdate(strtotime("$year-$month-1"));
+        }
+
+        //年月沒設定時，再看基準日有沒有設定get
+    } elseif (isset($_GET["thisDay"])) {
+        $thisDay = getdate($_GET["thisDay"]);
+        // print_r($thisDay);
+    }
+    // 全都沒設定時，基準日設定為今日
     else $thisDay = getdate();
+    // 看一下結果
+    // print_r($thisDay);
+
 
     //設定月份，這個月和前後兩個月
     $thisMonth = $thisDay["mon"];
@@ -48,7 +61,7 @@
     ?>
     <div>
         <form action="?" method='get'>
-            年份:<input type="number" name="year" min="-9999" max="9999" title="請輸入年份">
+            年份:<input type="number" name="year" min="0000" max="9999" value="/\d{4}/" title="請輸入年份">
             月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12">
             <input type="submit" value="查詢">
         </form>
@@ -88,22 +101,21 @@
                 </table>
                 <table class="calendar">
                     <tr>
-                        <th>一</th>
-                        <th>二</th>
-                        <th>三</th>
-                        <th>四</th>
-                        <th>五</th>
-                        <th>六</th>
-                        <th>日</th>
+                        <th>週日</th>
+                        <th>週一</th>
+                        <th>週二</th>
+                        <th>週三</th>
+                        <th>週四</th>
+                        <th>週五</th>
+                        <th>週六</th>
                     </tr>
 
                     <?php
 
                     //為何只印了第1次，沒有跟著月份重新填？
                     //因為變數設定問題，逐個變數印出來看看就會知道發生什麼事。
-
-                    // 開工用php填日期了，先設定一個以後可能用得著的今天
-                    $today = $thisDay[0];
+                    //現在的問題變成印第1次和回本月的時候只會從1日開始印，不會從該月第1天開始。
+                    // 應該是最前面的判斷式有問題。
 
                     // 先定出本月份的第1天
                     $firstDay = date("first day of", $thisDay[0]);
