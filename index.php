@@ -57,7 +57,6 @@
     $lastMonth = strtotime("first day of - 1 month", $thisDay[0]);
     $nextMonth = strtotime("first day of + 1 month", $thisDay[0]);
 
-
     ?>
     <div>
         <form action="?" method='get'>
@@ -116,13 +115,14 @@
                     //因為變數設定問題，逐個變數印出來看看就會知道發生什麼事。
                     //現在的問題變成印第1次和回本月的時候只會從1日開始印，不會從該月第1天開始。
                     // 應該是最前面的判斷式有問題。
+                    // 最後發現仍然是變數設定問題，之後使用函式時，沒必要的話不要混用，很容易出錯
 
                     // 先定出本月份的第1天
-                    $firstDay = date("first day of", $thisDay[0]);
+                    $firstDay = strtotime("first day of", $thisDay[0]);
                     //    echo $firstDay;
 
                     // 第一天是該週的第幾天
-                    $firstDayWeek = date("w", $thisDay[0]);
+                    $firstDayWeek = date("w", $firstDay);
 
                     // 當月份總共有幾天
                     $days = date("t", $thisDay[0]);
