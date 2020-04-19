@@ -7,7 +7,8 @@ body {
 
 .container {
   text-decoration: none;
-  /* border-radius: 30%; */
+  border-radius: 10%;
+  overflow: hidden;
   width: 1000px;
   border: 0;
   text-align: center;

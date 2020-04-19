@@ -60,7 +60,7 @@
     ?>
     <div>
         <form action="?" method='get'>
-            年份:<input type="number" name="year" min="0000" max="9999" value="/\d{4}/" title="請輸入年份">
+            年份:<input type="number" name="year" min="0000" max="9999" oninput="/\d{4}/" title="請輸入年份">
             月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12">
             <input type="submit" value="查詢">
         </form>
