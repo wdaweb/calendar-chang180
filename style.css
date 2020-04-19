@@ -47,8 +47,8 @@ body {
 }
 
 .calendar td:hover {
-  background: #ff0000;
-  font-weight: bold;
+  background: darkseagreen;
+  font-weight: bolder;
 }
 
 .date {
