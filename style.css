@@ -32,15 +32,15 @@ body {
   font-size: 30px;
 }
 .calendar td:last-child {
-  background: rgb(255, 35, 46);
+  background: rgb(110, 245, 128);
   font-size: 30px;
 }
 .calendar th:first-child {
-  background: rgb(255, 35, 46);
+  background: rgb(255, 35, 146);
   font-size: 30px;
 }
 .calendar th:last-child {
-  background: rgb(255, 35, 46);
+  background: rgb(110, 245, 228);
   font-size: 30px;
 }
 
