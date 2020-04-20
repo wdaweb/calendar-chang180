@@ -25,7 +25,7 @@
 
 
     // 利用表單輸入獲得年份及月份值，若沒有則使用本月1日做為值
-    // strtotime()裏面不能直接丟 $_GE 變數進去，會出錯
+    // strtotime()裏面不能直接丟 $_GET 變數進去，會出錯
 
     //如果年份和月份不為空值，則使用該年月的第1天：
     if (!empty($_GET["year"]) && !empty($_GET["month"])) {
@@ -60,7 +60,7 @@
     ?>
     <div>
         <form action="?" method='get'>
-            年份:<input type="number" name="year" min="0000" max="9999" value="/\d{4}/" title="請輸入年份">
+            年份:<input type="number" name="year" min="0" max="9999" oninput="/\d{4}/" title="請輸入年份">
             月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12">
             <input type="submit" value="查詢">
         </form>
