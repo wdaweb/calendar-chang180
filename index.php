@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆 Perpetual Calendar</title>
     <link rel="stylesheet" href="style.css">
-    <style>
+    <link rel="stylesheet" href="./plugins/css/bootstrap.css">
+    <!-- <style>
         .rCol {
-            /* 必須把背景圖片拿回來放，不然不會跟著月份輪換 */
+            必須把背景圖片拿回來放，不然不會跟著月份輪換
             background: url("https://picsum.photos/400/640/?random=1");
         }
-    </style>
+    </style> -->
+
 
 </head>
 
 <body>
+    <div class="container-fluid row justify-content-center">
     <?php
     // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
     date_default_timezone_set("Asia/Taipei");
@@ -59,7 +62,7 @@
 
     ?>
     <div>
-        <form action="?" method='get'>
+        <form action="?" method='get' class="align-content-between">
             年份:<input type="number" name="year" min="0" max="9999" oninput="/\d{4}/" title="請輸入年份">
             月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12">
             <input type="submit" value="查詢">
@@ -70,9 +73,10 @@
     echo "<h4 style='text-align:center'>西元", $thisDay["year"], "年", $thisDay["mon"], "月</h4>";
     ?>
 
-    <table class="container">
+    <table class="container-fluid row justify-content-center table">
+        <caption>請暫用全螢幕模式檢視，謝謝。</caption>
         <tr>
-            <td class="date">
+            <td class="date row justify-content-end">
                 <!-- 螢幕會顯示本月份以及上下個月的選項 -->
                 <a href="index.php?thisDay=<?= $lastMonth; ?>">上月(<?= date("n", $lastMonth); ?>)</a>
                 <a href="index.php?thisDay=<?= time(); ?>">回本月</a>
@@ -153,8 +157,11 @@
                     ?>
                 </table>
             </td>
-            <td class="rCol">
+            <td class="rCol"><img src="https://picsum.photos/400/660/?random=1" class="img-fluid img-thumbnail">
             </td>
         </tr>
     </table>
+    </div>
+    <script src="./plugins/js/jquery-3.5.0.js"></script>
+    <script src="./plugins/js/bootstrap.bundle.min.js"></script>
 </body>
