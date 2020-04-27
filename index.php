@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>萬年曆 Perpetual Calendar</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./plugins/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./plugins/css/bootstrap.css">
 
 </head>
 
@@ -16,7 +16,7 @@
         // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
         date_default_timezone_set("Asia/Taipei");
 
-        // 加入2020年節慶資料庫，須先匯入holiday.sql
+        // 加入2020年節慶資料庫，須先匯入 .Db/holiday.sql
         $dsn = "mysql:host=localhost;dbname=holiday;charset=utf8";
         $pdo = new PDO($dsn, 'root', '');
         $sql = "SELECT * FROM 2020_holiday";
@@ -136,7 +136,7 @@
                                         // 如果當天遇上假日，則將當日日期及假日名稱印出
                                         if (in_array(date("Y-m-d", $mDay), $holiday)) {
                                             echo "<td class='bg-primary'>";
-                                            echo $m, "<br>", array_search(date("Y-m-d", $mDay), $holiday);
+                                            echo $m, "<br>", '<span class="bg-light badge">',array_search(date("Y-m-d", $mDay), $holiday),'</span>';
                                             echo "</td>";
                                         }
                                         //否則只印出當日日期
