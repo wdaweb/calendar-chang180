@@ -47,14 +47,18 @@
         }
         // 全都沒設定時，基準日設定為今日
         else $thisDay = getdate();
-
-
+        
+        
         //設定月份，這個月和前後兩個月
         $thisMonth = $thisDay["mon"];
         $lastMonth = strtotime("first day of - 1 month", $thisDay[0]);
         $nextMonth = strtotime("first day of + 1 month", $thisDay[0]);
+        
+        //由於現行西曆為格里曆，從儒略曆1582年10月5日直接跳到格里曆10月15日，故此之前的程式換算有待調整
+        // 顯示月曆目前的年份和月份，西元沒有0年，所以小於西元1年要再減1
+        if ($thisDay["year"]<1) $thisDay["year"]-=1;
 
-        // 顯示月曆目前的年份的月份
+
         echo "<h3 style='text-align:center'>西元", $thisDay["year"], "年", $thisDay["mon"], "月</h3>";
         ?>
 
