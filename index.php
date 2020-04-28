@@ -16,7 +16,7 @@
         // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
         date_default_timezone_set("Asia/Taipei");
 
-        // 加入2020年節慶資料庫，須先匯入holiday.sql
+        // 加入2020年節慶資料庫，須先在MySQL建立holiday資料庫並匯入./Db/holiday.sql
         $dsn = "mysql:host=localhost;dbname=holiday;charset=utf8";
         $pdo = new PDO($dsn, 'root', '');
         $sql = "SELECT * FROM 2020_holiday";
