@@ -10,8 +10,7 @@
 
 </head>
 
-<body class="bg-white table-responsive">
-    <div class="container row-auto">
+<body class="container-fluid bg-dark text-light table-responsive w-auto vh-100">
         <?php
         // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
         date_default_timezone_set("Asia/Taipei");
@@ -66,7 +65,7 @@
             <input type="submit" value="查詢">
         </form>
 
-        <table class="container-fluid row justify-content-center table">
+        <table class="container-fluid row-12 justify-content-center table ">
             <tr>
                 <td class="date row justify-content-center h3">
                     <!-- 螢幕會顯示本月份以及上下個月的選項 -->
@@ -78,23 +77,23 @@
             </tr>
             <tr>
                 <td>
-                    <table class="month h6 table">
+                    <table class="month h5 table text-light">
                         <tr>
-                            <td>1月</td>
-                            <td>2月</td>
-                            <td>3月</td>
-                            <td>4月</td>
-                            <td>5月</td>
-                            <td>6月</td>
-                            <td>7月</td>
-                            <td>8月</td>
-                            <td>9月</td>
-                            <td>10月</td>
-                            <td>11月</td>
-                            <td>12月</td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of January',($thisDay[0])); ?>">1月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of February',($thisDay[0])); ?>">2月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of March',($thisDay[0])); ?>">3月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of April',($thisDay[0])); ?>">4月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of May',($thisDay[0])); ?>">5月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of June',($thisDay[0])); ?>">6月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of July',($thisDay[0])); ?>">7月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of August',($thisDay[0])); ?>">8月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of September',($thisDay[0])); ?>">9月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of October',($thisDay[0])); ?>">10月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of November',($thisDay[0])); ?>">11月</a></td>
+                            <td><a href="index.php?thisDay=<?=strtotime('first day of December',($thisDay[0])); ?>">12月</a></td>
                         </tr>
                     </table>
-                    <table class="calendar bg table">
+                    <table style="table-layout:fixed" class="calendar bg table text-light">
                         <tr>
                             <th>週日</th>
                             <th>週一</th>
@@ -140,7 +139,7 @@
                                         // 如果當天遇上假日，則將當日日期及假日名稱印出
                                         if (in_array(date("Y-m-d", $mDay), $holiday)) {
                                             echo "<td class='bg-primary'>";
-                                            echo $m, "<br>", '<span class="bg-light badge">',array_search(date("Y-m-d", $mDay), $holiday),'</span>';
+                                            echo $m, "<br>", '<span class="bg-dark badge text-light">',array_search(date("Y-m-d", $mDay), $holiday),'</span>';
                                             echo "</td>";
                                         }
                                         //否則只印出當日日期
@@ -167,7 +166,6 @@
             </tr>
             <!-- <caption>CSS重新修改中</caption> -->
         </table>
-    </div>
     <!-- <script src="./plugins/js/jquery-3.5.0.js"></script>
     <script src="./plugins/js/bootstrap.bundle.min.js"></script> -->
 </body>
