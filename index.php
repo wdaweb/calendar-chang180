@@ -10,7 +10,7 @@
 
 </head>
 
-<body class="container-fluid bg-dark text-light table-responsive w-auto vh-100">
+<body class="table container-fluid bg-dark text-light table-responsive w-auto vh-100">
         <?php
         // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
         date_default_timezone_set("Asia/Taipei");
@@ -61,8 +61,12 @@
         echo "<h3 style='text-align:center'>西元", $thisDay["year"], "年", $thisDay["mon"], "月</h3>";
         ?>
 
-        <form action="?" method='get' class="row justify-content-center h4">年份:<input type="number" name="year" min="0" max="9999" oninput="/\d{4}/" title="請輸入年份">月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12">
-            <input type="submit" value="查詢">
+        <form action="?" method='get' class="form-group row justify-content-center h4">
+            年份:
+            <input class="btn btn-info" type="number" name="year" min="0" max="9999" oninput="/\d{4}/" title="請輸入年份">
+            月份:
+            <input class="btn btn-info" type="number" name="month" min="1" max="12" title="請輸入1-12">
+            <input class="btn btn-light" type="submit" value="查詢">
         </form>
 
         <table class="container-fluid row-12 justify-content-center table ">
