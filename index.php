@@ -34,7 +34,7 @@
 
 </head>
 
-<body class="container-fluid bg-dark text-light table-responsive w-auto vh-100">
+<body class="container border border-light rounded-lg mt-3 bg-dark text-light table-responsive w-auto vh-50">
     <?php
     // 將預設時區設定到臺灣，沒設定在時間顯示上有時會出問題。
     date_default_timezone_set("Asia/Taipei");
@@ -86,35 +86,35 @@
     ?>
 
     <form action="?" method='get' class="row justify-content-center h4">年份:<input type="number" name="year" min="0" max="9999" oninput="/\d{4}/" title="請輸入年份">月份:<input type="number" name="month" min="1" max="12" title="請輸入1-12">
-        <input type="submit" value="查詢">
+        <input class="btn btn-warning ml-2" type="submit" value="查詢">
     </form>
 
     <table class="container-fluid row-12 justify-content-center table ">
         <tr>
             <td class="date row justify-content-center h3">
                 <!-- 螢幕會顯示本月份以及上下個月的選項 -->
-                <a href="index.php?thisDay=<?= $lastMonth; ?>">上月(<?= date("n", $lastMonth); ?>)</a>
-                <a href="index.php?thisDay=<?= time(); ?>">回本月</a>
+                <a class="btn btn-primary m-2" href="index.php?thisDay=<?= $lastMonth; ?>">上月(<?= date("n", $lastMonth); ?>)</a>
+                <a class="btn btn-primary m-2" href="index.php?thisDay=<?= time(); ?>">回本月</a>
                 <!-- <span>本月(<?= $thisMonth; ?>)</span> -->
-                <a href="index.php?thisDay=<?= $nextMonth; ?>">下月(<?= date("n", $nextMonth); ?>)</a>
+                <a class="btn btn-primary m-2" href="index.php?thisDay=<?= $nextMonth; ?>">下月(<?= date("n", $nextMonth); ?>)</a>
             </td>
         </tr>
         <tr>
             <td>
                 <table class="month h5 table text-light">
-                    <tr>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of January', ($thisDay[0])); ?>">1月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of February', ($thisDay[0])); ?>">2月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of March', ($thisDay[0])); ?>">3月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of April', ($thisDay[0])); ?>">4月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of May', ($thisDay[0])); ?>">5月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of June', ($thisDay[0])); ?>">6月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of July', ($thisDay[0])); ?>">7月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of August', ($thisDay[0])); ?>">8月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of September', ($thisDay[0])); ?>">9月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of October', ($thisDay[0])); ?>">10月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of November', ($thisDay[0])); ?>">11月</a></td>
-                        <td><a href="index.php?thisDay=<?= strtotime('first day of December', ($thisDay[0])); ?>">12月</a></td>
+                    <tr class="btn btn-group">
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of January', ($thisDay[0])); ?>">1月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of February', ($thisDay[0])); ?>">2月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of March', ($thisDay[0])); ?>">3月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of April', ($thisDay[0])); ?>">4月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of May', ($thisDay[0])); ?>">5月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of June', ($thisDay[0])); ?>">6月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of July', ($thisDay[0])); ?>">7月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of August', ($thisDay[0])); ?>">8月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of September', ($thisDay[0])); ?>">9月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of October', ($thisDay[0])); ?>">10月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of November', ($thisDay[0])); ?>">11月</a></td>
+                        <td><a class="btn btn-info" href="index.php?thisDay=<?= strtotime('first day of December', ($thisDay[0])); ?>">12月</a></td>
                     </tr>
                 </table>
                 <table style="table-layout:fixed" class="calendar bg table text-light">
